@@ -9,8 +9,9 @@ class SearchForm extends Component {
           <form>
             <div className="SearchBar">
               <SearchBox 
-                searchTerm={ this.props.searchTerm }
+                searchTerm={this.props.searchTerm }
                 handleUpdate={this.props.handleUpdate}
+                handleSubmission={this.props.handleSubmission}
               />
                 
             </div>
@@ -18,6 +19,7 @@ class SearchForm extends Component {
               <FilterOptions 
                 filterOption={ this.props.filterOption }
                 handleFilterChange={ this.props.handleFilterChange }
+                
               />
             </div>
           </form>

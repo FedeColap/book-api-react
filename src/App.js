@@ -5,16 +5,29 @@ import './App.css';
 
 class App extends Component {
 
-  updateSearchTerm(searchTerm) {
-    console.log('this is the word', searchTerm)
-    // this.setState({
-    //   searchTerm: term
-    // })
-  }
-  updateFilterOption(option) {
+  updateSearchTerm(e) {
+    
     this.setState({
-      filterOption: option
+      searchTerm: e
     })
+    console.log(e)
+  }
+
+  submitTerm(e) {
+    e.preventDefault();
+    console.log('submitted', this.state.searchTerm)
+    this.setState({
+      searchTerm: e
+    })
+    // formtheUrl();
+  }
+
+
+  updateFilterOption(e) {
+    console.log(e)
+    // this.setState({
+    //   filterOption: e
+    // })
   }
 
   constructor(props) {
@@ -24,38 +37,57 @@ class App extends Component {
       filterOption: 'true',
       books: []
     };
+    this.updateFilterOption= this.updateFilterOption.bind(this)
+    this.updateSearchTerm= this.updateSearchTerm.bind(this)
+    this.submitTerm= this.submitTerm.bind(this)
+    // this.formtheUrl= this.formtheUrl.bind(this)
   }
 
-  // componentDidMount() {
-  //   const url = 'https://www.googleapis.com/books/v1/volumes?'
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'q': 'searchTerm', 
-  //       'authorization': 'Bearer AIzaSyDI9IBFM0Lu_6Gu_5zDekNvkXF6QC0k-QI'
-  //     }
-  //   };
+  
+  
+  componentDidMount() {
 
-  //   fetch(url, options)
-  //     .then(res => {
-  //       if(!res.ok) {
-  //         throw new Error('Something went wrong, please try again later.');
-  //       }
-  //       return res;
-  //     })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         books: data,
-  //         error: null
-  //       });
-  //     })
-  //     .catch(err => {
-  //       this.setState({
-  //         error: err.message
-  //       });
-  //     });
-  // }
+    function formatQueryParams(params) {
+        const queryItems = Object.keys(params)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+        return queryItems.join('&');
+      }
+
+// function formtheUrl() {
+  const searchURL = 'https://www.googleapis.com/books/v1/volumes'
+    
+    const params = {
+          q: this.state.searchTerm      
+    };
+    const queryString = formatQueryParams(params)
+    
+    const url = searchURL + '?' + queryString;
+  
+    
+
+  
+
+    fetch(url)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('Something went wrong, please try again later.');
+        }
+        return res;
+      })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          books: data,
+          error: null
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err.message
+        });
+      });
+  
+}
 
   render() {
     return (
@@ -64,10 +96,11 @@ class App extends Component {
         <SearchForm 
             searchTerm={this.state.searchTerm}
             filterOption={this.state.filterOption}
-            handleUpdate={term=>this.updateSearchTerm(term)}
-            handleFilterChange={option => this.updateFilterOption(option)}
+            handleUpdate={this.updateSearchTerm}
+            handleFilterChange={this.updateFilterOption}
+            handleSubmission={this.submitTerm}
         />
-        <DisplayList />
+        <DisplayList booksretrieved={this.state.books}/>
       </div>
     );
   }
