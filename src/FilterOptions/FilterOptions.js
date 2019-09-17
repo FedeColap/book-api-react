@@ -8,17 +8,9 @@ class FilterOptions extends Component {
         return (
             <div className="FilterOptions">
                 <label htmlFor="book_type">Available as ebook</label> 
-                <select name="" id="print_type" >
-                    <option 
-                        value = 'true'
-                        onChange ={e => this.props.handleFilterChange(e.target.value)} 
-                    >Yes
-                    </option>
-                    <option 
-                        value = 'false'
-                        onChange ={e => this.props.handleFilterChange(e.target.value)} 
-                    >No 
-                    </option>
+                <select name="" id="print_type"  onChange ={e => this.props.handleFilterChange(e.target.value)}>
+                    <option value = 'true'>Yes</option>
+                    <option value = 'false'>No </option>
                 </select>
             </div>
 
