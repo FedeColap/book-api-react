@@ -18,8 +18,8 @@ class SearchBox extends Component {
           onChange ={e => this.props.handleUpdate(e.target.value)} 
         />
         <button type="submit" 
-        
-          onClick={e => this.props.handleSubmission(e)}
+          
+          onClick={e => this.props.handleSubmission(e) }
         >Search</button>
       </div>   
     );

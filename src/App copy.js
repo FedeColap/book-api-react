@@ -11,11 +11,15 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
+
+
 class App extends Component {
 
    formtheUrl() {
+     
+    
     const params = {
-      q: this.state.searchTerm      
+      q: this.state.searchTerm    
     };
     const queryString = formatQueryParams(params)
   
@@ -55,7 +59,7 @@ class App extends Component {
     this.setState({
       searchTerm: e
     })
-    this.formtheUrl();
+    // this.formtheUrl(e);
   }
 
 
@@ -75,7 +79,7 @@ class App extends Component {
     this.updateFilterOption= this.updateFilterOption.bind(this)
     this.updateSearchTerm= this.updateSearchTerm.bind(this)
     this.submitTerm= this.submitTerm.bind(this)
-    // this.formtheUrl= this.formtheUrl.bind(this)
+    this.formtheUrl= this.formtheUrl.bind(this)
   }
 
   render() {
@@ -89,6 +93,7 @@ class App extends Component {
             handleUpdate={this.updateSearchTerm}
             handleFilterChange={this.updateFilterOption}
             handleSubmission={this.submitTerm}
+            // createtheURL={this.formtheUrl}
         />
         <DisplayList booksretrieved={this.state.books}/>
       </div>

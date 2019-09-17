@@ -12,6 +12,7 @@ class SearchForm extends Component {
                 searchTerm={this.props.searchTerm }
                 handleUpdate={this.props.handleUpdate}
                 handleSubmission={this.props.handleSubmission}
+                // createtheURL= {this.props.createtheURL}
               />
                 
             </div>
