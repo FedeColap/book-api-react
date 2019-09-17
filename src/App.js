@@ -25,9 +25,9 @@ class App extends Component {
 
   updateFilterOption(e) {
     console.log(e)
-    // this.setState({
-    //   filterOption: e
-    // })
+    this.setState({
+      filterOption : e
+    })
   }
 
   constructor(props) {
