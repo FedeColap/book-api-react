@@ -6,7 +6,7 @@ import FilterOptions from '../FilterOptions/FilterOptions'
 class SearchForm extends Component {
     render() {
         return (
-          <form>
+          <form onSubmit={e => this.props.handleSubmission}>
             <div className="SearchBar">
               <SearchBox 
                 searchTerm={this.props.searchTerm }

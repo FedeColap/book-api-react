@@ -10,15 +10,16 @@ class SearchBox extends Component {
       
       <div className="SearchBox">
         <label htmlFor="searchterm">Search</label>  
-        <input 
+        <input className="scatola"
             type="text"
             placeholder="Search term" 
-            id="searchterm"
+            
+            name="searchterm"
             // defaultValue={this.props.searchTerm}
           onChange ={e => this.props.handleUpdate(e.target.value)} 
         />
         <button type="submit" 
-          
+          aria-label="Submit Button"
           onClick={e => this.props.handleSubmission(e) }
         >Search</button>
       </div>   
