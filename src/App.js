@@ -14,9 +14,22 @@ function formatQueryParams(params) {
 class App extends Component {
 
    formtheUrl() {
-    const params = {
-      q: this.state.searchTerm      
-    };
+    // const params = {
+    //   q: this.state.searchTerm ,   
+    // };
+    let isEbook = this.state.filterOption; 
+    let params;
+
+    if (isEbook === "eBooks") { 
+      params = {
+      q: this.state.searchTerm ,  
+      filter: isEbook
+    };} else {
+      params = {
+        q: this.state.searchTerm ,   
+      };
+    }
+    console.log(params)
     const queryString = formatQueryParams(params)
   
     const url = searchURL + '?' + queryString;
@@ -30,6 +43,7 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
+      console.log(url)
       console.log(data)
       this.setState({
         books: data.items,
@@ -63,16 +77,16 @@ class App extends Component {
 
 
   updateFilterOption(e) {  
-    this.setState({
-      filterOption : e
-    })
+      this.setState({
+        filterOption: e
+      })
   }
 
   constructor(props) {
     super(props);
     this.state = {
       searchTerm: '',
-      filterOption: 'true',
+      filterOption: 'eBooks',
       books: []
     };
     this.updateFilterOption= this.updateFilterOption.bind(this)
@@ -93,7 +107,8 @@ class App extends Component {
             handleFilterChange={this.updateFilterOption}
             handleSubmission={this.submitTerm}
         />
-        <DisplayList books={this.state.books}/>
+        <DisplayList books={this.state.books}
+                     filterApplied={this.state.filterOption}/>
       </div>
     );
   }

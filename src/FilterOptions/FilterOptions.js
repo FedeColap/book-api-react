@@ -12,8 +12,8 @@ class FilterOptions extends Component {
                         name="" 
                         id="print_type"  
                         onChange ={e => this.props.handleFilterChange(e.target.value)}>
-                    <option value = 'true'>Yes</option>
-                    <option value = 'false'>No </option>
+                    <option value = 'eBooks'>Yes</option>
+                    <option value = ''>No </option>
                 </select>
             </div>
 

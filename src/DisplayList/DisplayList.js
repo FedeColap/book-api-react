@@ -12,15 +12,32 @@ class DisplayList extends Component {
       // const list = this.props
       // console.log(list)
 
-      const books = this.props.books;
+      
+      const list = this.props.books
+      .filter(book => book.saleInfo.isEbook === this.props.filterApplied)
+      console.log(list)
 
-      return books.map(book => 
-          <div>
-            <h4>{book.volumeInfo.title}</h4>
-            <p>{book.volumeInfo.authors}</p>
-            <img className="image" src={book.volumeInfo.imageLinks.smallThumbnail} alt="this is an image of the book" />
+      
+      return list.map(book => 
+            <div>
+              <h4>{book.volumeInfo.title}</h4>
+              <p>{book.volumeInfo.authors}</p>
+              <img className="image" src={book.volumeInfo.imageLinks.smallThumbnail} alt="this is an image of the book" />
+  
+            </div>)
+  // return (
+  //   <div className="FilterableList">
+  //     {list}
+  //   </div>
+  // );
+        
+      // books.map(book => 
+      //     <div>
+      //       <h4>{book.volumeInfo.title}</h4>
+      //       <p>{book.volumeInfo.authors}</p>
+      //       <img className="image" src={book.volumeInfo.imageLinks.smallThumbnail} alt="this is an image of the book" />
 
-          </div>)
+      //     </div>)
 
       // return books.map(book => <div>{book.id}</div>);
 
