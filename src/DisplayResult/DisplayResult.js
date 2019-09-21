@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import './DisplayResult.css';
 
-class DisplayResult extends Component {
-    render() {
+function DisplayResult(props) {
+   
+        
+        
+        console.log(props.books)
+        const bookList = props.books.map(book => <p>{book.id}</p>)
         return(
-            <div className="DisplayResult">
-                <div className="ListItem__title">{this.props.name}</div>
-            <div className="ListItem__size">{this.props.size}</div>
-            </div>
+            <div>
+            <h4>{book.volumeInfo.title}</h4>
+            <p>{book.volumeInfo.authors}</p>
+            <img className="image" src={book.volumeInfo.imageLinks.smallThumbnail} alt="this is an image of the book" />
+
+          </div>
         )
-    }
+    
 }
 
 export default DisplayResult

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './DisplayList.css'
-import DisplayResult from '../DisplayResult/DisplayResult'
+// import DisplayResult from '../DisplayResult/DisplayResult'
 
 class DisplayList extends Component {
 
@@ -14,7 +14,15 @@ class DisplayList extends Component {
 
       const books = this.props.books;
 
-      return books.map(book => <div>{book.id}</div>);
+      return books.map(book => 
+          <div>
+            <h4>{book.volumeInfo.title}</h4>
+            <p>{book.volumeInfo.authors}</p>
+            <img className="image" src={book.volumeInfo.imageLinks.smallThumbnail} alt="this is an image of the book" />
+
+          </div>)
+
+      // return books.map(book => <div>{book.id}</div>);
 
       // return <p>hello</p>
       
