@@ -30,12 +30,12 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(url)
+      console.log(data)
       this.setState({
-        books: data,
+        books: data.items,
         error: null,  
       })
-      // console.log(this.state.books.items);
+      console.log(this.state.books);
     })
     .catch(err => {
       this.setState({
@@ -93,7 +93,7 @@ class App extends Component {
             handleFilterChange={this.updateFilterOption}
             handleSubmission={this.submitTerm}
         />
-        <DisplayList booksretrieved={this.state.books.items}/>
+        <DisplayList books={this.state.books}/>
       </div>
     );
   }

@@ -3,11 +3,22 @@ import './DisplayList.css'
 import DisplayResult from '../DisplayResult/DisplayResult'
 
 class DisplayList extends Component {
-    render() {
-      const list = this.props.booksretrieved;
-      console.log(list)
 
-      return list.map(book => <p>{book.id}</p>)
+  // constructor(props){
+  //   super(props)
+  // }
+    render() {
+      console.log(this.props)
+      // const list = this.props
+      // console.log(list)
+
+      const books = this.props.books;
+
+      return books.map(book => <div>{book.id}</div>);
+
+      // return <p>hello</p>
+      
+      
       
 
       // for (let i = 0; i < list.items.length; i++){
@@ -23,8 +34,7 @@ class DisplayList extends Component {
         //   <a href="${responseJson.data[i].url}" target="_blank"><p>${responseJson.data[i].url}</p></a>
         //   </li>`
         // )};
-
-      // list.items.map((file, key) => <DisplayResult {...file} key={key} />);
+// return list.items.map((file, key) => <DisplayResult {...file} key={key} />);
         // const { searchTerm, filterOption } = this.props;
         // const list = this.props.booksretrieved
         //     .filter(file => file.name.includes(searchTerm)
@@ -32,7 +42,7 @@ class DisplayList extends Component {
         //     .map((file, key) => <DisplayResult {...file} key={key} />);
         // return (
         //   <div className="DisplayList">
-        //     {/* {list} */} 
+        //     {list} 
         //   </div>
         // );
         }
@@ -40,7 +50,9 @@ class DisplayList extends Component {
 }
     
     // DisplayList.defaultProps = {
-    //   files: []
+    //   state: {
+    //     items:[]
+    //   }
     // };
 
 
